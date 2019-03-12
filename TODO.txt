@@ -1,0 +1,15 @@
+Work to Complete (Priority[1-high, 2-medium, 3-low]):
+
+Resize GUI (3)
+Add color to GUI (3)
+Add team member names, course name, etc. to GUI (2)
+Create new .py file for subarray algorithm (1)
+Load our data into the git repo (1)
+Create new .py file for talking to the data (1)
+Figure out how to initially sort the data (1)
+Hook the string from gui.py to the algorithm in algo.py to the data in data.py (1)
+Add timing mechanism (1)
+Display timing on GUI (2)
+Add spelling checkers? (3)
+Give options to narraw the search like genre? (3)
+
