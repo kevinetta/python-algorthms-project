@@ -9,6 +9,7 @@ def mean(nums):
     return float(sum(nums)) / max(len(nums), 1)
 
 def search_song():
+	keyword = lyric_text.get()
 	print("Searching for song containing: " + lyric_text.get())
 	total_matches=0
 	searched=0
