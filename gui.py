@@ -17,8 +17,8 @@ def search_song():
 	#pd.read_csv("res\\lyrics.csv", encoding="utf8")
 	total_time= time.time()
 	for index, row in pandas_csv.iterrows():
+		#TODO: use pandas_csv.head().iterrows() to compmare the different algorithms and report the average time for each run
 		if row['genre'] == chosen_genre.get():
-			#reg=lcs(keyword,row['lyrics'],len(keyword),len(row['lyrics']))
 			count = 0
 			start_time_dynamic = time.time()
 			try:
