@@ -16,30 +16,31 @@ def search_song():
 	readings=np.array([])
 	#pd.read_csv("res\\lyrics.csv", encoding="utf8")
 	total_time= time.time()
-	
-	with open("res\\lyrics.csv", encoding="utf8") as csvfile:
-		reader = csv.DictReader(csvfile)
-		row_num=0
-		for row in reader:
-			if row['genre'] == chosen_genre.get():
-				#reg=lcs(keyword,row['lyrics'],len(keyword),len(row['lyrics']))
-				count = 0
-				start_time_dynamic = time.time()
+	for index, row in pandas_csv.iterrows():
+		if row['genre'] == chosen_genre.get():
+			#reg=lcs(keyword,row['lyrics'],len(keyword),len(row['lyrics']))
+			count = 0
+			start_time_dynamic = time.time()
+			try:
 				dynamic = LCSubStr(keyword, row['lyrics'], len(keyword), len(row['lyrics']))
-				#dynamic=dynamic_lcs(keyword,row['lyrics']) 
-				readings = np.append(readings,time.time()-start_time_dynamic)
-				avg = np.mean(readings)	
-				if dynamic == len(keyword):
-					print("match found:",row['song'], row['artist'],dynamic)
-					total_matches+=1
-				searched+=1
-				row_num+=1
-		print("Total Searched:",searched,"Total Matches found:",total_matches)
-		print("Average time spent on lcs:",avg,"Total Time spent:",time.time()-total_time)
+			except:
+				print("error")
+			#dynamic=dynamic_lcs(keyword,row['lyrics']) 
+			readings = np.append(readings,time.time()-start_time_dynamic)
+			avg = np.mean(readings)	
+			if dynamic == len(keyword):
+				print("match found:",row['song'], row['artist'],dynamic)
+				total_matches+=1
+			searched+=1
+	print("Total Searched:",searched,"Total Matches found:",total_matches)
+	print("Average time spent on lcs:",avg,"Total Time spent:",time.time()-total_time)
 
 
 
-pandas_csv = pd.read_csv("res\\lyrics.csv")
+df = pd.read_csv("res\\lyrics.csv")
+#pandas_csv.dropna(axis=0,how="any")
+pandas_csv = df[df['lyrics'].notnull()]
+#TODO: lowercase the lyrics in database and lowercase all input from user
 genres = pandas_csv['genre'].unique()
 
 
